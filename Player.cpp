@@ -21,3 +21,22 @@ void playerMoveSet(Player& player, char keys[]) {
     player.pos.x += player.move.x;
     player.pos.y += player.move.y;
 };
+
+void playerJumpSet(Player& player, char keys[],char preKeys[]) {
+    if (player.isJumping == false) {
+        if (keys[DIK_SPACE] && !preKeys[DIK_SPACE]) {
+            player.gravity = -40.0f;
+            player.isJumping = true;
+        }
+    }
+
+    if (player.isJumping == true) {
+        player.gravity += 2.3f;
+    }
+    player.jumpScrollpos += player.gravity;
+    if (player.jumpScrollpos >= 0) {
+        player.jumpScrollpos = 0;
+        player.isJumping = false;
+        player.gravity = 0;
+    }
+}

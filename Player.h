@@ -22,3 +22,5 @@ typedef struct Player {
 } Player;
 
 void playerMoveSet(Player& player, char keys[]);
+
+void playerJumpSet(Player& player, char keys[], char preKeys[]);

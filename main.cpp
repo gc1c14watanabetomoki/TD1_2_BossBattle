@@ -50,24 +50,9 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
         ///
         
         playerMoveSet(player, keys);
+        playerJumpSet(player, keys, preKeys);
 
-        if (player.isJumping == false) {
-            if (keys[DIK_SPACE] && !preKeys[DIK_SPACE]) {
-                player.gravity = -40.0f;
-                player.isJumping = true;
-            }
-        }
-       
-        if (player.isJumping == true) {
-            player.gravity += 2.6f;
-        }
-        player.jumpScrollpos += player.gravity;
-        if (player.jumpScrollpos >= 0) {
-            player.jumpScrollpos = 0;
-            player.isJumping = false;
-            player.gravity = 0;
-        }
-       
+
         if (keys[DIK_A]) {
             player.direction = -1;
         }
